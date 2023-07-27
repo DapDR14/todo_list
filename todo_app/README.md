@@ -1,66 +1,142 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://laravel.com" target="_blank">
+        <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+    </a>
 </p>
 
-## About Laravel
+# <p align="center">ToDo List</p>
+<p align="center">
+    Engineering Test by Law Advisor Adventure
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Instruction
+Setup a project with your programming language of choice and create an API for managing a TODO list with the following specification:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. The user should be able to list all tasks in the TODO list
+2. The user should be able to add a task to the TODO list
+3. The user should be able to update the details of a task in the TODO list
+4. The user should be able to remove a task from the TODO list
+5. The user should be able to reorder the tasks in the TODO list
+6. A task in the TODO list should be able to handle being moved more than 50 times
+7. A task in the TODO list should be able to handle being moved to more than one task away from its current position
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Note: You can think of this as an API endpoint that will be used to handle the drag and drop feature of a TODO list application
 
-## Learning Laravel
+All endpoints should return JSON responses.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Prerequisites
+- Laravel
+- MySQL
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Setup
+To run this project:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone the repository
+```bash
+ $ git clone https://github.com/DapDR14/todo_list.git
+ ```
 
-## Laravel Sponsors
+2. CD into your project
+```bash
+ $ cd todo_app
+ ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+3. Install Composer Dependencies
+```bash
+ $ composer install
+ ```
 
-### Premium Partners
+4. Generate an app encryption key
+```bash
+ $ php artisan key:generate
+ ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+5. Run database migration
+```bash
+ $ php artisan migrate
+ ```
 
-## Contributing
+6. Run seeder for database
+```bash
+ $ php artisan db:seed
+ ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7. Start the server
+```bash
+ $ php artisan serve
+ ```
 
-## Code of Conduct
+ The API will now be accessible at http://127.0.0.1:8000.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+ #API Endpoints
 
-## Security Vulnerabilities
+ ##Endpoint to get all the todo tasks
+ ```bash
+ $ GET /api/tasks
+ ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+ This endpoint returns a JSON with the list of tasks.
 
-## License
+##Endpoint to add new task
+```bash
+ $ POST /tasks/new
+ ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ ##Body Parameters in JSON
+ ```bash
+ $ {
+    "title": "Exercise",
+    "description": "Do 10 situps"
+    }
+ ```
+
+ This endpoint allows you to add new tasks that has the title and its description.
+
+ ##Endpoint to update the title and description of an existing task
+```bash
+ $ POST /tasks/details/{id}
+ ```
+
+##Body Parameters in JSON
+ ```bash
+ $ {
+    "title": "Exercise",
+    "description": "Do 10 situps"
+    }
+ ```
+
+ This endpoint allows you to update a specific task's title and description.
+
+ ##Endpoint to delete a task
+```bash
+ $ DELETE /tasks/{id}
+ ```
+
+This endpoint allows you to delete a specific task.
+
+##Endpoint to reorder the tasks
+```bash
+ $ PUT /tasks/reorder
+ ```
+
+##Body Parameters in JSON
+ ```bash
+ $ {
+    "tasks": [
+        {
+        "id": 1,
+        "position": 3
+        },
+        {
+        "id": 2,
+        "position": 2
+        },
+        {
+        "id": 3,
+        "position": 1
+        }
+    ]
+    }
+ ```
+
+ This endpoint allows you to reorder or update the positioning of your tasks in todo list.
