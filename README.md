@@ -58,7 +58,7 @@ To run this project:
 
 6. Run seeder for database
 ```bash
- $ php artisan db:seed
+ $ php artisan db:seed --class=TaskSeeder
  ```
 
 7. Start the server
