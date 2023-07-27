@@ -68,8 +68,10 @@ class TasksController extends Controller
 
     // Function for editing the details of a task
     public function editTask (Request $request, $id) {
-        // Get all post data
-        $input = $request->all();
+        // Get title and description post data
+        $title = $request->input('title');
+        $desc = $request->input('description');
+        $status = $request->input('status');
 
         // Check if task id exists
         $task = Tasks::find($id);
@@ -77,7 +79,11 @@ class TasksController extends Controller
         // If task id exists
         if ($task) {
             // Then update the data
-            $task->update($request->all());
+            $task->update([
+                'title' => $title,
+                'description' => $desc,
+                'status' => $status
+            ]);
 
             return response()->json([
                 'status' => 200,
