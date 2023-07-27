@@ -11,20 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->increments("id");
-            $table->string("title");
-            $table->string("description");
-            $table->integer("position");
-            $table->string("status");
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('tasks');
+        // Check if the table 'tasks' exist in the db
+        if (!Schema::hasTable('tasks')) {
+            Schema::create('tasks', function (Blueprint $table) {
+                $table->increments("id");
+                $table->string("title");
+                $table->string("description");
+                $table->integer("position");
+                $table->string("status");
+            });
+        }
     }
 };
