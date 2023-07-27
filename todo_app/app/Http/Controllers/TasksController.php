@@ -38,8 +38,7 @@ class TasksController extends Controller
         $input = Tasks::create([
                 'title' => $input['title'],
                 'description' => $input['description'],
-                'position' => $taskOrder,
-                'status' => $input['status']
+                'position' => $taskOrder
         ]);
 
         // Check if task has been created on the db
