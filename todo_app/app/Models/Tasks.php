@@ -17,5 +17,8 @@ class Tasks extends Model
         'status'
     ];
 
+    protected $attributes = [
+        'status' => 'Pending',
+    ];
     public $timestamps = false;
 }

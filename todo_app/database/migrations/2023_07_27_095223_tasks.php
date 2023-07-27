@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->string("title");
                 $table->string("description");
                 $table->integer("position");
-                $table->string("status");
+                $table->string("status")->default('Pending');
             });
         }
     }
