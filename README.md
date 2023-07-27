@@ -68,6 +68,23 @@ To run this project:
 
 The API will now be accessible at http://127.0.0.1:8000.
 
+
+To create a database:
+
+1. Open XAMPP
+
+2. Start MySQL Database and Apache Web Server
+
+3. Open web browser and copy this to your web browser
+```bash
+ http://localhost/phpmyadmin/
+```
+
+4. On the side bar, click New to add a new database
+
+5. Create your database by putting a Database name and make sure to change the DB_DATABASE in your .env file
+
+
 ## API Endpoints
 
 ## Endpoint to get all the todo tasks
