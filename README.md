@@ -6,7 +6,7 @@
 
 # <p align="center">ToDo List</p>
 <p align="center">
-    Engineering Test by Law Advisor Adventure
+    Engineering Test by Law Advisor Ventures
 </p>
 
 ## Instruction
